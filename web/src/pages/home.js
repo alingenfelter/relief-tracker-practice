@@ -10,6 +10,9 @@ const Home = React.createClass({
           <h3>Menu</h3>
           <ul>
             <li><Link to='/about'>About</Link></li>
+            <li><Link to='/persons'>People</Link></li>
+            <li><Link to='/efforts'>Relief Efforts</Link></li>
+            <li><Link to='/locations'>Locations</Link></li>
           </ul>
         </div>
       </div>
