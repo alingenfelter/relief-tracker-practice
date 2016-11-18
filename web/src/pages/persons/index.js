@@ -5,9 +5,7 @@ const xhr = require('xhr')
 const Persons = React.createClass({
   getInitialState: function() {
     return{
-      persons: [
-        {firstName: 'Bob', lastName: 'Marley'}
-      ]
+      persons: []
     }
   },
   componentDidMount() {
@@ -20,7 +18,13 @@ const Persons = React.createClass({
   },
   render() {
     const listPerson = person =>
-      <li>{person.firstName + ' ' + person.lastName}</li>
+    //backtick and $ is es6 embedded tag templete.
+    // same as '/persons/' + person.id + '/show'
+      <li key={person.id}>
+        <Link to={`/persons/${person.id}/show`}>
+        {person.firstName + ' ' + person.lastName}
+        </Link>
+      </li>
     return (
       <div>
         <h1>Persons List</h1>
