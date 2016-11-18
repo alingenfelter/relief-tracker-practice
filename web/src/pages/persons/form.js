@@ -20,6 +20,7 @@ const PersonForm = React.createClass({
       this.setState(newState)
     }
   },
+
   handleSubmit(e) {
     e.preventDefault()
     if (this.state.id) {
