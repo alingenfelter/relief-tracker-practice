@@ -4,6 +4,7 @@ const Home = require('./pages/home')
 const About = require('./pages/about')
 const Persons = require('./pages/persons')
 const Person = require('./pages/persons/show')
+const PersonForm = require('./pages/persons/form')
 
 const NoMatch = () => (
   <div>
@@ -18,6 +19,7 @@ const App = React.createClass({
       <BrowserRouter>
         <div>
           <Match exactly pattern='/' component={Home} />
+          <Match exactly pattern="/persons/new" component={PersonForm} />
           <Match pattern='/about' component={About} />
           <Match exactly pattern='/persons' component={Persons} />
           <Match pattern='/persons/:id/show' component={Person} />
