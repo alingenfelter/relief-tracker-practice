@@ -18,7 +18,11 @@ const Efforts = React.createClass({
   },
   render() {
     const listEffort = effort =>
-      <li>{effort.name}</li>
+      <li key={effort.id}>
+        <Link to={`/efforts/${effort.id}/show`}>
+        {effort.name}
+        </Link>
+      </li>
     return(
       <div>
         <h1>Relief Efforts</h1>
