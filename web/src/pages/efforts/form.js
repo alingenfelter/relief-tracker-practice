@@ -23,18 +23,37 @@ const EffortForm = React.createClass({
   },
   handleSubmit(e) {
     e.preventDefault()
-    xhr.post('http://localhost:4000/efforts', {
-      json: this.state
-    }, (err, response, body) => {
-      if (err) return console.log(err.message)
-      this.setState({success: true})
-    })
+    if (this.state.id) {
+      xhr.put('http://localhost:4000/efforts/' + this.state.id, {
+        json: this.state
+      }, (err, response, body) => {
+        if (err) return console.log(err.message)
+        this.setState({success: true})
+      })
+    } else {
+      xhr.post('http://localhost:4000/efforts', {
+        json: this.state
+      }, (err, response, body) => {
+        if (err) return console.log(err.message)
+        this.setState({success: true})
+      })
+    }
+  },
+  componentDidMount() {
+    if (this.props.params.id) {
+      xhr.get('http://localhost:4000/efforts/' + this.props.params.id,
+        {json: true}, (err, res, effort) => {
+          if (err) return console.log(err.message)
+          this.setState(effort)
+        })
+    }
   },
   render() {
+    const formState = this.state.id ? 'Edit' : 'New'
     return (
       <div>
       {this.state.success ? <Redirect to='/efforts' /> : null}
-        <h1>New Effort Form</h1>
+        <h1>{formState} Relief Effort Form</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label style={labelStyle}>Name</label>
