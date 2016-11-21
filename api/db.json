@@ -1,25 +1,9 @@
 {
   "persons": [
     {
-      "firstName": "Jim",
-      "lastName": "Morrison",
-      "email": "",
-      "phone": "",
-      "success": false,
-      "id": "2"
-    },
-    {
       "id": 4,
       "firstName": "Elvis",
       "lastName": "Presely"
-    },
-    {
-      "firstName": "Yngwie",
-      "lastName": "Malmsteen",
-      "email": "ym@ym.com",
-      "phone": "999-888-7777",
-      "success": false,
-      "id": "5"
     },
     {
       "firstName": "Bob",
@@ -28,6 +12,14 @@
       "phone": "",
       "success": false,
       "id": "8"
+    },
+    {
+      "firstName": "Yngview",
+      "lastName": "Malmsteen",
+      "email": "",
+      "phone": "",
+      "success": false,
+      "id": "SJoVzalzx"
     }
   ],
   "efforts": [
@@ -40,16 +32,6 @@
       "end": "2017-10-09",
       "active": true,
       "id": "9"
-    },
-    {
-      "name": "Kenya 2015",
-      "phase": "Completed",
-      "organizationID": "St. Phillips",
-      "desc": "Build a hospital in Kenya.",
-      "start": "2015-02-01",
-      "end": "2016-03-09",
-      "active": false,
-      "id": "10"
     },
     {
       "name": "Costa Rica 2017",
@@ -68,8 +50,30 @@
       "desc": "Provide medical support for tsunami search and rescue effor",
       "start": "2004-12-23",
       "end": "2005-01-20",
-      "id": "BJ6OzoxMl"
+      "id": "12"
     }
   ],
-  "locations": []
+  "locations": [
+    {
+      "name": "Thailand",
+      "country": "Thailand",
+      "lat": "14.3271",
+      "lng": "120.9787",
+      "id": "13"
+    },
+    {
+      "name": "Pavones",
+      "country": "Costa Rica",
+      "lat": "8.3875",
+      "lng": "-83.1394",
+      "id": "14"
+    },
+    {
+      "name": "Les Anglais",
+      "country": "Haiti",
+      "lat": "18.3087",
+      "lng": "-74.2149",
+      "id": "15"
+    }
+  ]
 }

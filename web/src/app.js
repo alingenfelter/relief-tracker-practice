@@ -9,6 +9,9 @@ const Service = require('./components/service')
 const Efforts = require('./pages/efforts')
 const Effort = require('./pages/efforts/show')
 const EffortForm = require('./pages/efforts/form')
+const Locations = require('./pages/locations')
+const Location = require('./pages/locations/show')
+const LocationForm = require('./pages/locations/form')
 
 const NoMatch = () => (
   <div>
@@ -32,6 +35,10 @@ const App = React.createClass({
           <Match pattern='/efforts/:id/show' component={Effort} />
           <Match exactly pattern='/efforts/new' component = {EffortForm} />
           <Match exactly pattern='/efforts/:id/edit' component={EffortForm} />
+          <Match exactly pattern='/locations' component={Locations} />
+          <Match pattern='/locations/:id/show' component={Location} />
+          <Match exactly pattern='/locations/new' component = {LocationForm} />
+          <Match exactly pattern='/locations/:id/edit' component={LocationForm} />
           <Miss component={NoMatch} />
         </div>
       </BrowserRouter>
