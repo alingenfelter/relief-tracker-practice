@@ -1,6 +1,8 @@
 const React = require('react')
 const {Link, Redirect} = require('react-router')
-const labelStyle = { display: 'block' }
+const labelStyle = { display: 'block', color: 'red' }
+const inputStyle = {display: 'block', color: 'gray', background: 'light-gray', width: '200px', height: '30px'}
+const textInputStyle = {display: 'block', color: 'gray', background: 'light-gray', width: '200px', height: '120px'}
 const xhr = require('xhr')
 
 const LocationForm = React.createClass({
@@ -49,55 +51,57 @@ const LocationForm = React.createClass({
   render() {
     const formState = this.state.id ? 'Edit' : 'New'
     return (
-      <div>
+      <div className='pa4 bg-light-silver'>
       {this.state.success ? <Redirect to='/locations' /> : null}
         <h1>{formState} Location Form</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label style={labelStyle}>Location Name</label>
-            <input
+            <input style={inputStyle}
               onChange={this.handleChange('name')}
               value={this.state.name}
               type="text" />
           </div>
           <div>
             <label style={labelStyle}>Country</label>
-            <input
+            <input style={inputStyle}
               onChange={this.handleChange('country')}
               value={this.state.country}
               type="text" />
           </div>
           <div>
             <label style={labelStyle}>Latitude</label>
-            <input
+            <input style={inputStyle}
               onChange={this.handleChange('lat')}
               value={this.state.lat}
               type="text" />
           </div>
           <div>
             <label style={labelStyle}>Longitude</label>
-            <input
+            <input style={inputStyle}
               onChange={this.handleChange('lng')}
               value={this.state.lng}
               type="text" />
           </div>
           <div>
             <label style={labelStyle}>Start Date</label>
-            <input
+            <input style={inputStyle}
               onChange={this.handleChange('start')}
               value={this.state.start}
               type="text" />
           </div>
           <div>
             <label style={labelStyle}>End</label>
-            <input
+            <input style={inputStyle}
               onChange={this.handleChange('end')}
               value={this.state.end}
               type="text" />
           </div>
           <div>
-              <button>Save</button>
+              <button className='br2 bg-white pa2 mt2 mr2 fl'>Save</button>
+            <div className='br2 bg-white pa2 mt2 mr2 dib'>
               <Link to="/locations">Cancel</Link>
+            </div>
           </div>
         </form>
       </div>

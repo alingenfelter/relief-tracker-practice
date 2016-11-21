@@ -32,15 +32,23 @@ const Location = React.createClass({
   },
   render() {
     return (
-      <div>
+      <div className='bg-light-silver'>
         { this.state.removed ? <Redirect to='/locations' /> : null}
         <h3>{this.state.location.name}</h3>
-        <p>Country: {this.state.location.country}</p>
-        <p>Latitude: {this.state.location.lat}</p>
-        <p>Longitude: {this.state.location.lng}</p>
-        <Link to={`/locations/${this.state.location.id}/edit`}>Edit Location</Link>
-        <button onClick={this.handleRemove}>Remove</button>
-        <Link to='/locations'>Return</Link>
+        <div className='ba bw1 bg-light-gray b--silver br2 pa2'>
+          <p>Country: {this.state.location.country}</p>
+          <p>Latitude: {this.state.location.lat}</p>
+          <p>Longitude: {this.state.location.lng}</p>
+        </div>
+        <div className='br2 bg-white pa2 mt2 mr2 mb2 dib fl'>
+          <Link to={`/locations/${this.state.location.id}/edit`}>Edit Location</Link>
+        </div>
+        <div>
+          <button className='br2 bg-white pa2 mt2 mb2 mr2 fl' onClick={this.handleRemove}>Remove</button>
+        </div>
+        <div className='br2 bg-white pa2 mt2 mr2 mb2 dib'>
+          <Link to='/locations'>Return</Link>
+        </div>
       </div>
 
     )

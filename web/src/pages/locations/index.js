@@ -24,12 +24,14 @@ const Locations = React.createClass({
         </Link>
       </li>
     return(
-      <div>
+      <div className='bg-light-silver'>
         <h1>Locations</h1>
         <ul>
           {this.state.locations.map(listLocations)}
         </ul>
-        <Link to='/'>Home</Link>
+        <div className='br2 bg-white pa2 mt2 mb2 mr2 dib'>
+          <Link to='/'>Home</Link>
+        </div>
       </div>
     )
   }

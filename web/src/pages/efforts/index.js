@@ -24,12 +24,17 @@ const Efforts = React.createClass({
         </Link>
       </li>
     return(
-      <div>
-        <h1>Relief Efforts</h1>
-        <ul>
+      <div className='bg-light-silver'>
+        <h1 className = 'black'>Relief Efforts</h1>
+        <ul className='black'>
           {this.state.efforts.map(listEffort)}
         </ul>
-        <Link to='/'>Home</Link>
+        <div className='br2 bg-white pa2 mt2 mb2 mr2 dib fl'>
+          <Link to="/efforts/new">New Relief Effort</Link>
+        </div>
+        <div className='br2 bg-white pa2 mt2 mb2 mr2 dib'>
+          <Link to='/'>Home</Link>
+        </div>
       </div>
     )
   }
