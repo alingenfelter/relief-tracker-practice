@@ -5,15 +5,19 @@ const inputStyle = {display: 'block', color: 'gray', background: 'light-gray', w
 const textInputStyle = {display: 'block', color: 'gray', background: 'light-gray', width: '200px', height: '120px'}
 const xhr = require('xhr')
 
+const TextField = require('../../components/TextField')
+
 const EffortForm = React.createClass({
   getInitialState: function() {
     return {
       name: '',
-      phase: 'Planning',
+      phase: '',
       organizationID: '',
       desc: '',
       start: '',
-      end: ''
+      end: '',
+      location_id: '',
+      locations: [{id: '-1', name: 'choose'}]
     }
   },
   handleChange(field) {
@@ -25,6 +29,13 @@ const EffortForm = React.createClass({
   },
   handleSubmit(e) {
     e.preventDefault()
+    //to store effort value in DB, store value to variable then remove array
+    //could also be handled by changing initial state to place
+    //effort object (inc location_id) and locations array outside effort object.
+    //would require updating render to this.state.effort.field
+    let effort = [].concat(this.state)
+    delete effort.locations
+
     if (this.state.id) {
       xhr.put('http://localhost:4000/efforts/' + this.state.id, {
         json: this.state
@@ -42,6 +53,16 @@ const EffortForm = React.createClass({
     }
   },
   componentDidMount() {
+    //add to get locations
+    xhr(process.env.REACT_APP_API + '/locations', {
+      json: true
+    }, (err, res, body) => {
+      //console.log(body)
+      if (err) return console.log(err.message)
+      this.setState({locations:
+        [].concat(this.state.locations,body)
+      })
+    })
     if (this.props.params.id) {
       xhr.get('http://localhost:4000/efforts/' + this.props.params.id,
         {json: true}, (err, res, effort) => {
@@ -52,17 +73,22 @@ const EffortForm = React.createClass({
   },
   render() {
     const formState = this.state.id ? 'Edit' : 'New'
+    //console.log(this.state.locations)
     return (
       <div className='pa4 bg-light-silver'>
       {this.state.success ? <Redirect to='/efforts' /> : null}
         <h1>{formState} Relief Effort Form</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label style={labelStyle}>Name</label>
+            <TextField label='name'
+              value={this.state.name}
+              onChange={this.handleChange('name')}
+            />
+            {/* <label style={labelStyle}>Name</label>
             <input style={inputStyle}
               onChange={this.handleChange('name')}
               value={this.state.name}
-              type="text" />
+              type="text" /> */}
           </div>
           <div>
             <label style={labelStyle}>Phase</label>
@@ -70,19 +96,28 @@ const EffortForm = React.createClass({
               onChange={this.handleChange('phase')}
               value={this.state.phase}
               type="text">
+              <option value='choose'>Choose</option>
               <option value='planning'>Planning</option>
               <option value='in_process'>In Process</option>
               <option value='complete'>Complete</option>
             </select>
           </div>
           <div>
-            <label style={labelStyle}>Organization</label>
+          <TextField label='organizationID'
+            value={this.state.organizationID}
+            onChange={this.handleChange('organizationID')}
+          />
+            {/* <label style={labelStyle}>Organization</label>
             <input style={inputStyle}
               onChange={this.handleChange('organizationID')}
               value={this.state.organizationID}
-              type="text" />
+              type="text" /> */}
           </div>
           <div>
+          {/* <TextField label='description'
+            value={this.state.desc}
+            onChange={this.handleChange('desc')}
+          /> */}
             <label style={labelStyle}>Description</label>
             <textarea style={textInputStyle}
               onChange={this.handleChange('desc')}
@@ -102,6 +137,20 @@ const EffortForm = React.createClass({
               onChange={this.handleChange('end')}
               value={this.state.end}
               type="text" />
+          </div>
+          <div>
+            <select
+              value={this.state.location_id}
+              onChange={this.handleChange('location_id')}>
+              {/* <option>Location1</option>
+              <option>Location2</option> */}
+              {/* {this.state.locations.map(location => {
+                return <option>{location}</option>
+              })} */}
+              {this.state.locations.map(location => {
+                return <option value={location.id}>{location.name}</option>
+              })}
+            </select>
           </div>
           <div>
             <div>

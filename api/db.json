@@ -38,10 +38,12 @@
       "phase": "Planning",
       "organizationID": "Rancho Burica",
       "desc": "Protect Sea Turtles nests in southern Costa Rica.",
-      "start": "2017-05-11",
+      "start": "2017-05-10",
       "end": "2017-11-15",
+      "location_id": "",
       "active": true,
-      "id": "11"
+      "id": "11",
+      "success": true
     },
     {
       "name": "Thailand Tsunami 2004",
@@ -50,7 +52,9 @@
       "desc": "Provide medical support for tsunami search and rescue effor",
       "start": "2004-12-23",
       "end": "2005-01-20",
-      "id": "12"
+      "location_id": "13",
+      "id": "12",
+      "success": true
     }
   ],
   "locations": [
